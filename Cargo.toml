@@ -1,0 +1,23 @@
+[package]
+name = "spack-cli"
+license = "Apache-2.0/MIT"
+repository = "https://github.com/swc-project/swc.git"
+description = "spack cli for benchmark game"
+version = "0.1.0"
+authors = ["강동윤 <kdy1997.dev@gmail.com>"]
+edition = "2018"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+spack = { path = "../swc/spack" }
+swc = {path = "../swc/"}
+swc_bundler = { path = "../swc/bundler", features = ["concurrent"] }
+swc_common = { path = "../swc/common", features = ["tty-emitter", "sourcemap"] }
+anyhow = "1"
+clap = "2"
+
+[profile.release]
+codegen-units = 1
+lto = true
