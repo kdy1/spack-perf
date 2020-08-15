@@ -73,27 +73,26 @@ fn main() -> Result<(), Error> {
         },
     );
 
-    // let matches = App::new("spack")
-    //     .arg(
-    //         Arg::with_name("destination")
-    //             .short("d")
-    //             .takes_value(true)
-    //             .required(true)
-    //             .help("directory to place built files"),
-    //     )
-    //     .arg(
-    //         Arg::with_name("entries")
-    //             .value_name("ENTRIES")
-    //             .help("entry files")
-    //             .takes_value(true)
-    //             .multiple(true)
-    //             .required(true),
-    //     )
-    //     .global_setting(AppSettings::ArgRequiredElseHelp)
-    //     .get_matches();
+    let matches = App::new("spack")
+        .arg(
+            Arg::with_name("destination")
+                .short("d")
+                .takes_value(true)
+                .required(true)
+                .help("directory to place built files"),
+        )
+        .arg(
+            Arg::with_name("entries")
+                .value_name("ENTRIES")
+                .help("entry files")
+                .takes_value(true)
+                .multiple(true)
+                .required(true),
+        )
+        .global_setting(AppSettings::ArgRequiredElseHelp)
+        .get_matches();
 
-    // let entries = matches.values_of_lossy("entries").unwrap();
-    let entries = vec!["../../spack/integration-tests/react/src/index.tsx".to_string()];
+    let entries = matches.values_of_lossy("entries").unwrap();
     let modules = bundler
         .bundle(
             entries
@@ -114,7 +113,8 @@ fn main() -> Result<(), Error> {
             BundleKind::Dynamic => format!("dynamic.{}.js", bundled.id).into(),
         };
 
-        let output_path = PathBuf::from("out").join(name.file_name().unwrap());
+        let output_path = PathBuf::from(matches.value_of_lossy("destination").unwrap().to_string())
+            .join(name.file_name().unwrap());
 
         fs::write(&output_path, code).unwrap();
     }

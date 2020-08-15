@@ -6,9 +6,9 @@ cargo build --release
 
 sync
 
-exa -al ../../target/release/spack-cli
+exa -al target/release/spack-cli
 
-time -p ../../target/release/spack-cli  ../../spack/integration-tests/react/src/index.tsx -d out
+time -p target/release/spack-cli  ~/projects/three.js/src/Three.js
 
 sudo cargo flamegraph --bin spack-cli
 
