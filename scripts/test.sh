@@ -8,7 +8,7 @@ sync
 
 exa -al ../../target/release/spack-cli
 
-time ../../target/release/spack-cli  ../../spack/integration-tests/react/src/index.tsx -d out
+time -p ../../target/release/spack-cli  ../../spack/integration-tests/react/src/index.tsx -d out
 
 sudo cargo flamegraph --bin spack-cli
 
