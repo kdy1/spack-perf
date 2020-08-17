@@ -3,13 +3,5 @@
 rustflags = [
     "--cfg", "procmacro2_semver_exempt",
     "-Z", "thinlto=no",
-]
- 
-rustdocflags = [
-    "--cfg", "procmacro2_semver_exempt",
-]
-
-[target.wasm32-unknown-unknown]
-rustflags = [
-    "--cfg", "procmacro2_semver_exempt",
+    "-C", "target-feature=+sse2",
 ]
