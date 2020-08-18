@@ -90,7 +90,12 @@ fn main() -> Result<(), Error> {
                 .required(true),
         )
         .global_setting(AppSettings::ArgRequiredElseHelp)
-        .get_matches();
+        .get_matches_from(vec![
+            "spack-cli",
+            "/Users/kdy1/projects/three.js/src/Three.js",
+            "-d",
+            "out",
+        ]);
 
     let entries = matches.values_of_lossy("entries").unwrap();
     let modules = bundler

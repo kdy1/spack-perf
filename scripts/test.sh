@@ -8,7 +8,8 @@ sync
 
 exa -al target/release/spack-cli
 
-time -p target/release/spack-cli  ~/projects/three.js/src/Three.js
+time -p target/release/spack-cli  ~/projects/three.js/src/Three.js -d out
 
-sudo cargo flamegraph --bin spack-cli
+# sudo cargo flamegraph --bin spack-cli
+sudo flamegraph target/release/spack-cli 
 
