@@ -90,12 +90,7 @@ fn main() -> Result<(), Error> {
                 .required(true),
         )
         .global_setting(AppSettings::ArgRequiredElseHelp)
-        .get_matches_from(vec![
-            "spack-cli",
-            "../rxjs/src/internal/observable/dom/AjaxObservable.ts",
-            "-d",
-            "out",
-        ]);
+        .get_matches_from(vec!["spack-cli", "../rxjs/src/index.ts", "-d", "out"]);
 
     let entries = matches.values_of_lossy("entries").unwrap();
     let modules = bundler
