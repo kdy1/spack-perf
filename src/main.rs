@@ -92,7 +92,7 @@ fn main() -> Result<(), Error> {
         .global_setting(AppSettings::ArgRequiredElseHelp)
         .get_matches_from(vec![
             "spack-cli",
-            "/Users/kdy1/projects/three.js/src/Three.js",
+            "../rxjs/src/internal/observable/dom/AjaxObservable.ts",
             "-d",
             "out",
         ]);
